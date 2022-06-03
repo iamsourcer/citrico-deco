@@ -24,6 +24,10 @@ img {
   width:100%;
 }
 
+b-navbar-item img {
+  width:auto;
+}
+
 footer {
   margin-top: 40px;
   background-color: white !important;
