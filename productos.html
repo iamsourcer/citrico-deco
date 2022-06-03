@@ -1,0 +1,220 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navigation bar -->
+    <b-navbar :fixed-top="true" :spaced="true" :shadow="true" type="is-warning">
+      <template #brand>
+        <b-navbar-item href="/">
+          <img src="img/citrico_logo_largo.png">
+        </b-navbar-item>
+      </template>
+      <template #start>
+        <b-navbar-item href="index.html">
+          Home
+        </b-navbar-item>
+        <b-navbar-item href="productos.html" :active="true">
+          Productos
+        </b-navbar-item>
+        <b-navbar-item href="contact.html">
+          Contacto
+        </b-navbar-item>
+        <b-navbar-item href="faq.html">
+          Faq
+        </b-navbar-item>
+      </template>
+      <template #end >
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/fb.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/twitter.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/instagram.png" style="max-height: 1rem;">
+        </b-navbar-item>
+      </template>
+    </b-navbar>
+
+
+    <div class="wrapper">
+      <div class="image-grid">
+          <div v-for="maceta in productos" class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img :src="maceta.imagen" :alt="maceta.nombre">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                {{maceta.descripcion}}
+              </div>
+
+              <b-taglist>
+                <div v-for="c in maceta.colores">
+                  <color :name="paleta[c].nombre" :code="paleta[c].codigo"> </color>
+                </div>
+              </b-taglist>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer has-background-warning has-text-centered ">
+      <img class="logo-footer" src="img/mega_logo.png">
+      <p class="is-size-7"><i>Todos los derechos reservados</i></p>
+      <div class="socials-footer">
+        <a href="#" class="is-hidden-desktop">
+          <img src="img/fb.png">
+        </a>
+        <a href="#" class="is-hidden-desktop">
+          <img src="img/twitter.png">
+        </a>
+        <a href="#" class="is-hidden-desktop">
+          <img src="img/instagram.png">
+        </a>
+      </div>
+  </footer>
+
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="https://unpkg.com/vue@2"></script>
+  <!-- Full bundle -->
+  <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+  <!-- <script src="js/plugins.js"></script> -->
+  <script src="js/main.js"></script>
+
+  <script type="text/javascript">
+
+      Vue.component(
+        // the registered name
+        'color',
+        // the implementation
+        {
+          data: function(){
+            return {
+            }
+          },
+          props:['name', 'code'],
+          computed: {
+            estilos1 () {
+              return 'border-width: 1px; border-style: solid; border-color: ' + this.code;
+            },
+            estilos2 () {
+              return 'background-color: ' + this.code ;
+            }
+          },
+          template: `
+          <b-taglist attached style="padding:0 5px;">
+            <b-tag type="is-light" :style="estilos1">{{name}}</b-tag>
+            <b-tag :style="estilos2"></b-tag>
+          </b-taglist>
+            `
+        }
+      )
+    const citricoapp = new Vue({  //creamos un objeto con nombre app
+      el:"#app",
+      data:{
+        paleta: {
+          rosa: {nombre:'Rosa', codigo:'pink'},
+          amarillo: {nombre:'Amarillo', codigo:'yellow'},
+          aqua: {nombre:'Aqua', codigo:'aqua'},
+          natural: {nombre:'Natural', codigo:'whitesmoke'},
+          gris: {nombre:'Gris', codigo:'grey'}
+        },
+        productos:[
+          {
+            nombre:'Petalos',
+            colores: ['rosa', 'aqua', 'gris', 'amarillo'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          },
+          {
+            nombre:'Row',
+            colores: ['rosa', 'natural', 'gris'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          },
+          {
+            nombre:'Strawberry',
+            colores: ['rosa', 'amarillo'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          },
+          {
+            nombre:'Petalos',
+            colores: ['rosa', 'aqua', 'gris', 'amarillo'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          },
+          {
+            nombre:'Row',
+            colores: ['rosa', 'natural', 'gris'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          },
+          {
+            nombre:'Strawberry',
+            colores: ['rosa', 'amarillo'],
+            descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt',
+            imagen: 'img/1.jpeg'
+          }
+        ]
+      },
+        created(){ // cada vez que se cree un objecto
+        //  this.fetchData('https://randomuser.me/api') // aca tiene que venir una api
+        },
+        methods: {
+
+        }, //funciones que se activan cuando los llamo
+        computed: {
+
+        },
+         //funciones que se activan cuando se renderiza/cambia el html
+      })
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(window).on('scroll', function() {
+        if (Math.round($(window).scrollTop()) > 100) {
+          $('.navbar').removeClass('is-spaced is-warning').addClass('is-compacted is-light');
+        } else {
+          $('.navbar').removeClass('is-compacted is-light').addClass('is-spaced is-warning');
+
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

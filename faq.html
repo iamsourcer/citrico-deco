@@ -1,0 +1,172 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navigation bar -->
+    <b-navbar :fixed-top="true" :spaced="true" :shadow="true" type="is-warning">
+      <template #brand>
+        <b-navbar-item href="/">
+          <img src="img/citrico_logo_largo.png">
+        </b-navbar-item>
+      </template>
+      <template #start>
+        <b-navbar-item href="index.html">
+          Home
+        </b-navbar-item>
+        <b-navbar-item href="productos.html">
+          Productos
+        </b-navbar-item>
+        <b-navbar-item href="contact.html">
+          Contacto
+        </b-navbar-item>
+        <b-navbar-item href="faq.html" :active="true">
+          Faq
+        </b-navbar-item>
+      </template>
+      <template #end >
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/fb.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/twitter.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/instagram.png" style="max-height: 1rem;">
+        </b-navbar-item>
+      </template>
+    </b-navbar>
+
+
+    <!-- faqs -->
+    <div class="panel  " style="padding: 2rem; margin:5rem; background-color:#5065a8 !important">
+      <template>
+        <section>
+
+          <b-collapse class="card mt-3 has-background-light" animation="slide" v-for="(collapse, index) of collapses" :key="index" :open="isOpen == index" @open="isOpen = index" :aria-id="'contentIdForA11y5-' + index">
+            <template #trigger="props">
+              <div class="card-header" role="button" :aria-controls="'contentIdForA11y5-' + index" :aria-expanded="props.open">
+                <p class="card-header-title">
+                  {{ collapse.title }}
+                </p>
+                <a class="card-header-icon">
+                  <b-icon :icon="props.open ? 'menu-down' : 'menu-up'">
+                  </b-icon>
+                </a>
+              </div>
+            </template>
+            <div class="card-content">
+              <div class="content" v-html="collapse.text">
+              </div>
+            </div>
+          </b-collapse>
+
+        </section>
+      </template>
+    </div>
+
+
+
+    <!-- footer -->
+    <footer class="footer has-background-warning has-text-centered ">
+        <img class="logo-footer" src="img/mega_logo.png">
+        <p class="is-size-7"><i>Todos los derechos reservados</i></p>
+        <div class="socials-footer">
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/fb.png">
+          </a>
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/twitter.png">
+          </a>
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/instagram.png">
+          </a>
+        </div>
+    </footer>
+
+  </div>
+
+  <!-- scripts -->
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="https://unpkg.com/vue@2"></script>
+  <!-- Full bundle -->
+  <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+  <!-- <script src="js/plugins.js"></script> -->
+  <script src="js/main.js"></script>
+
+  <script>
+    const citricoapp = new Vue({ //creamos un objeto con nombre app
+      el: "#app",
+      data() {
+        return {
+          isOpen: 0,
+          collapses: [{
+              title: '¿Cuál es el costo de envío?',
+              text: 'El costo de envío será mostrado en base al total de la compra y ubicación, en el checkout, en el momento previo a la compra.'
+            },
+            {
+              title: '¿Cómo se realizan los envíos?',
+              text: 'Trabajamos con Mensajeria directa para Capital Federal y OCA para todo el país'
+            },
+            {
+              title: '¿Dónde puedo recibir mi pedido?',
+              text: 'Realizamos envíos a todo el país.'
+            },
+            {
+              title: 'Cambios y devoluciones',
+              text: 'El reclamo debe realizarse dentro de las 24hs de recibido el producto comunicandote via mail a contacto@citricodeco.com.ar o desde el <a href="contact.html">formulario de contacto</a>'
+            },
+            {
+              title: '¿Qué debo hacer si el producto no llega en buen estado?',
+              text: 'Ponte en contacto con nosotros a contacto@citricodeco.com.ar adjuntando foto donde se vea el desperfecto y se procedera al reemplazo del mismo.'
+            },
+            {
+              title: '¿Qué debo hacer si el producto no es lo que esperaba?',
+              text: 'Podes acercarte a cualquiera de nuestras sucursales dentro de las 72hs de recibido el producto o enviarlo por mensajeria (costo a cargo del comprador y previa combinacion con la sucursal y si esta en perfecto estado se te devolvera el dinero sin incluir el costo de envio. El reembolso sera via la plataforma de pago. No se realizan devoluciones de plantas ni macetas con plantas transplantadas ya que se considera que el producto está usado.'
+            }
+          ]
+        }
+      }
+    })
+  </script>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(window).on('scroll', function() {
+        if (Math.round($(window).scrollTop()) > 100) {
+          $('.navbar').removeClass('is-spaced is-warning').addClass('is-compacted is-light');
+        } else {
+          $('.navbar').removeClass('is-compacted is-light').addClass('is-spaced is-warning');
+
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

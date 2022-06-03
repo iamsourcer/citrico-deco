@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navigation bar -->
+    <b-navbar :fixed-top="true" :spaced="true" :shadow="true" type="is-warning">
+      <template #brand>
+        <b-navbar-item href="/">
+          <img src="img/citrico_logo_largo.png">
+        </b-navbar-item>
+      </template>
+      <template #start>
+        <b-navbar-item href="index.html" :active="true">
+          Home
+        </b-navbar-item>
+        <b-navbar-item href="productos.html">
+          Productos
+        </b-navbar-item>
+        <b-navbar-item href="contact.html" >
+          Contacto
+        </b-navbar-item>
+        <b-navbar-item href="faq.html">
+          Faq
+        </b-navbar-item>
+      </template>
+      <template #end >
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/fb.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/twitter.png" style="max-height: 1rem;">
+        </b-navbar-item>
+        <b-navbar-item class="is-hidden-mobile" href="/">
+          <img src="img/instagram.png" style="max-height: 1rem;">
+        </b-navbar-item>
+      </template>
+    </b-navbar>
+
+    <section class="section">
+      <h1 class="title">Section</h1>
+      <h2 class="subtitle">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </h2>
+      <!-- carroucel -->
+      <div class="container is-max-desktop">
+        <template>
+          <b-carousel :autoplay="true" with-carousel-list :indicator="false" :overlay="gallery" @click="switchGallery(true)">
+            <b-carousel-item v-for="(item, i) in items" :key="i">
+              <figure class="image">
+                <img :src="item.image">
+              </figure>
+            </b-carousel-item>
+            <span v-if="gallery" @click="switchGallery(false)" class="modal-close is-large" />
+            <template #list="props">
+              <b-carousel-list v-model="props.active" :data="items" v-bind="al" @switch="props.switch($event, false)" as-indicator />
+            </template>
+          </b-carousel>
+        </template>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer has-background-warning has-text-centered ">
+        <img class="logo-footer" src="img/mega_logo.png">
+        <p class="is-size-7"><i>Todos los derechos reservados</i></p>
+        <div class="socials-footer">
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/fb.png">
+          </a>
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/twitter.png">
+          </a>
+          <a href="#" class="is-hidden-desktop">
+            <img src="img/instagram.png">
+          </a>
+        </div>
+    </footer>
+
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="https://unpkg.com/vue@2"></script>
+    <!-- Full bundle -->
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <!-- <script src="js/plugins.js"></script> -->
+    <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+      const citricoapp = new Vue({ //creamos un objeto con nombre app
+        el: "#app",
+        data() {
+          return {
+            gallery: false,
+            al: {
+              hasGrayscale: true,
+              itemsToShow: 2,
+              breakpoints: {
+                768: {
+                  hasGrayscale: false,
+                  itemsToShow: 4
+                },
+                960: {
+                  hasGrayscale: true,
+                  itemsToShow: 6
+                }
+              }
+            },
+            items: [{
+                title: 'Slide 1',
+                image: 'img/car_0.webp'
+              },
+              {
+                title: 'Slide 2',
+                image: 'img/car_1.webp'
+              },
+              {
+                title: 'Slide 3',
+                image: 'img/car_2.webp'
+              },
+              {
+                title: 'Slide 4',
+                image: 'img/car_3.webp'
+              },
+            ]
+          }
+        },
+        methods: {
+          switchGallery(value) {
+            this.gallery = value
+            if (value) {
+              document.documentElement.classList.add('is-clipped')
+            } else {
+              document.documentElement.classList.remove('is-clipped')
+            }
+          }
+        }
+      })
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(window).on('scroll', function() {
+          if (Math.round($(window).scrollTop()) > 100) {
+            $('.navbar').removeClass('is-spaced is-warning').addClass('is-compacted is-light');
+          } else {
+            $('.navbar').removeClass('is-compacted is-light').addClass('is-spaced is-warning');
+
+          }
+        });
+      });
+    </script>
+</body>
+
+</html>

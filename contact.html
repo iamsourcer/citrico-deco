@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+
+    <meta name="theme-color" content="#fafafa">
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Navigation bar -->
+      <b-navbar :fixed-top="true" :spaced="true" :shadow="true" type="is-warning">
+        <template #brand>
+          <b-navbar-item href="/">
+            <img src="img/citrico_logo_largo.png">
+          </b-navbar-item>
+        </template>
+        <template #start>
+          <b-navbar-item href="index.html">
+            Home
+          </b-navbar-item>
+          <b-navbar-item href="productos.html">
+            Productos
+          </b-navbar-item>
+          <b-navbar-item href="contact.html" :active="true">
+            Contacto
+          </b-navbar-item>
+          <b-navbar-item href="faq.html">
+            Faq
+          </b-navbar-item>
+        </template>
+        <template #end >
+          <b-navbar-item class="is-hidden-mobile" href="/">
+            <img src="img/fb.png" style="max-height: 1rem;">
+          </b-navbar-item>
+          <b-navbar-item class="is-hidden-mobile" href="/">
+            <img src="img/twitter.png" style="max-height: 1rem;">
+          </b-navbar-item>
+          <b-navbar-item class="is-hidden-mobile" href="/">
+            <img src="img/instagram.png" style="max-height: 1rem;">
+          </b-navbar-item>
+        </template>
+      </b-navbar>
+
+      <!-- section contacto -->
+      <section class="section">
+        <h1 class="title is-size-6">Contactanos</h1>
+        <h2 class="subtitle is-size-7">
+          Lorem ipsum dolor sit amet, consectetur adipisicing <strong>elit, sed do</strong> eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <!-- contact form -->
+        <div class="columns mt-2 mx-0">
+        <div class="column">
+            <iframe height="100%" width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.7580535195475!2d-58.43184578459829!3d-34.584988064014674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb58f69ac361f%3A0x23fdc20e98ae8896!2sFray%20Justo%20Sta.%20Mar%C3%ADa%20de%20Oro%201888%2C%20C1414DBD%20CABA!5e0!3m2!1sen!2sar!4v1653666985913!5m2!1sen!2sar"></iframe>
+        </div>
+        <div class="column ">
+          <div class="card">
+            <div class="card-content">
+              <form>
+
+                <div class="field">
+                  <label class="label is-size-7">Name</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Text input" required>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label is-size-7">Email</label>
+                  <div class="control">
+                    <input class="input" type="email" placeholder="Email input" required>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label is-size-7">Subject</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="subject" required >
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label is-size-7">Message</label>
+                  <div class="control">
+                    <textarea class="textarea is-size-7" placeholder="Textarea"></textarea>
+                  </div>
+                </div>
+
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link" style="background-color:#5065a8">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </section>
+
+
+      <!-- footer -->
+      <footer class="footer has-background-warning has-text-centered ">
+          <img class="logo-footer" src="img/mega_logo.png">
+          <p class="is-size-7"><i>Todos los derechos reservados</i></p>
+          <div class="socials-footer">
+            <a href="#" class="is-hidden-desktop">
+              <img src="img/fb.png">
+            </a>
+            <a href="#" class="is-hidden-desktop">
+              <img src="img/twitter.png">
+            </a>
+            <a href="#" class="is-hidden-desktop">
+              <img src="img/instagram.png">
+            </a>
+          </div>
+      </footer>
+
+    </div>
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="https://unpkg.com/vue@2"></script>
+    <!-- Full bundle -->
+    <script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>
+    <!-- <script src="js/plugins.js"></script> -->
+    <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+      new Vue({el: "#app"})
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(window).on('scroll', function() {
+          if (Math.round($(window).scrollTop()) > 100) {
+            $('.navbar').removeClass('is-spaced is-warning').addClass('is-compacted is-light');
+          } else {
+            $('.navbar').removeClass('is-compacted is-light').addClass('is-spaced is-warning');
+
+          }
+        });
+      });
+    </script>
+  </body>
+
+</html>

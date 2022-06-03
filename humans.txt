@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+    Your Title: Full stack Engineer
+    Name: Jonathan Tarrico
+    Twitter: @iamsoucer
+
+# THANKS
+
+    Paula Meresman
+    Carla Bevilacqua
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    jQuery, Vue
