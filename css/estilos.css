@@ -20,7 +20,7 @@ color: #444; */
   grid-column-gap: 1%;
 }
 
-img {
+.image-grid img {
   width:100%;
 }
 
